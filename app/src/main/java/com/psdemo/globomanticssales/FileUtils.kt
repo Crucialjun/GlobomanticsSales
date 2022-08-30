@@ -1,6 +1,7 @@
 package com.psdemo.globomanticssales
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Align.*
@@ -87,4 +88,14 @@ import java.util.*
 
     fun Context.getFiles(id:Int): List<File> {
         return this.getFolder(id).listFiles().asList()
+    }
+
+    fun Context.saveImage(bitmap: Bitmap,fileName : String,id: Int){
+        val directory = this.getFolder(id)
+        val file = File(directory,"${fileName}.png")
+        val outputStream = FileOutputStream(file)
+
+        bitmap.compress(Bitmap.CompressFormat.PNG,90,outputStream)
+        outputStream.flush()
+        outputStream.close()
     }

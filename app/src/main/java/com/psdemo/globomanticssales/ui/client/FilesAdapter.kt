@@ -41,7 +41,7 @@ class FilesAdapter(private val onClickListener: OnClickListener) :
         private val card: CardView = itemView.findViewById(R.id.card)
 
         fun bind(file: File, clickListener: OnClickListener) {
-            //card.setOnClickListener { clickListener.onClick(file.id) }
+            card.setOnClickListener { clickListener.onClick(file) }
 
             name.text = file.name
 
@@ -53,6 +53,6 @@ class FilesAdapter(private val onClickListener: OnClickListener) :
     }
 
     interface OnClickListener {
-        fun onClick(id: Int)
+        fun onClick(file: File)
     }
 }
